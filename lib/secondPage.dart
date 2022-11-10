@@ -1,26 +1,38 @@
-
 import 'package:flutter/material.dart';
 
-class secondPage extends StatefulWidget {
-  secondPage({Key? key}) : super(key: key);
+class SecondPage extends StatefulWidget {
+  final String userName;
+  final String eMail;
+  final String password;
+  SecondPage(
+      {required this.userName, required this.eMail, required this.password});
 
   @override
-  State<secondPage> createState() => _secondPageState();
+  State<SecondPage> createState() => _SecondPageState();
 }
 
-class _secondPageState extends State<secondPage> {
+TextStyle myTextStyle() {
+  return TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
+}
+
+class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Page"),
+        title: const Text("Second Page"),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Image.asset('lib/assets/success.jpg', width:500,)
-           
+            Text("User Name: ${widget.userName}",style: myTextStyle(),),
+            Text("E-Mail: ${widget.eMail}",style:  myTextStyle(),),
+            Text("Password: ${widget.password}", style: myTextStyle(),),
+            Image.asset(
+              'lib/assets/success.jpg',
+              width: 200,
+            )
           ],
         ),
       ),
